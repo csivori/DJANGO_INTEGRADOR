@@ -1,11 +1,24 @@
-def get_int()->int:
+def get_int_iterativa()->int:
+  '''Lee un valor entero de la consola, iterando mientras el valor no sea numérico (iterativamente)'''
+
   num = input("Ingrese un número: ")
   while True:
-    num = input("Re-Ingrese un NUMERO: ")
     try:
       num = int(num)
       return num
     except ValueError:
-      pass
+      num = input("ERROR: Debe ser un valor entero!   Ingrese un número: ")
   
-print(get_int())
+def get_int_recursiva()->int:
+  '''Lee un valor entero de la consola, iterando mientras el valor no sea numérico (recursivamente)'''
+  
+  num = input("Ingrese un número: ")
+  try:
+    num = int(num)
+    return num
+  except ValueError:
+    print("ERROR: Debe ser un valor entero!   ", end='')
+    return get_int_recursiva()
+
+print(get_int_iterativa())
+print(get_int_recursiva())
